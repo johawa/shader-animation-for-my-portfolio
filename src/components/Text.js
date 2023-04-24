@@ -1,12 +1,18 @@
-import { Center, Text3D } from "@react-three/drei";
+import { Center, Text3D, useFont, Text } from "@react-three/drei";
 import { Select } from "@react-three/postprocessing";
-import { useState, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useState, useRef, useMemo } from "react";
+import { extend, useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
+import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
 
-export default function TitleText() {
+extend({ TextGeometry });
+
+export default function TitleText({ size = 10 }) {
   const [hovered, hover] = useState(null);
   const ref = useRef();
+
+  const font = useFont("/Inter_Bold.json");
+  const config = useMemo(() => ({ font, size: 1, height: 2 }), [font]);
 
   // useFrame((state) => {
   //   if (ref.current) {
@@ -25,26 +31,19 @@ export default function TitleText() {
   // });
 
   return (
-    <Center position={[0, 10, 2]}>
-      <Select enabled={hovered}>
-        <Text3D
-          ref={ref}
-          onPointerOver={() => hover(true)}
-          onPointerOut={() => hover(false)}
-          curveSegments={32}
-          bevelEnabled
-          bevelSize={0.04}
-          bevelThickness={0.1}
-          height={0.5}
-          lineHeight={0.5}
-          letterSpacing={-0.06}
-          size={1.5}
-          font="/Inter_Bold.json"
-        >
-          {`Johannes Walenta`}
-          <meshStandardMaterial color="lightblue" />
-        </Text3D>
-      </Select>
-    </Center>
+    <Select enabled={true}>
+      <Center position={[0, 5, 0]}>
+        <group ref={ref} scale={[0.1 * size, 0.1 * size, 0.1]}>
+          <mesh
+            onPointerOver={() => hover(true)}
+            onPointerOut={() => hover(false)}
+          >
+            <textGeometry args={["Johannes Walenta", config]} />
+            {/* <meshNormalMaterial /> */}
+            <meshStandardMaterial color="orange"></meshStandardMaterial>
+          </mesh>
+        </group>
+      </Center>
+    </Select>
   );
 }

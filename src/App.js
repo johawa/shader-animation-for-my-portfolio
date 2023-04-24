@@ -26,16 +26,13 @@ function App() {
         position: [25, 28, 35],
         // rotation: [degToRad(-40), degToRad(30), degToRad(20)],
       }}
-      onCreated={({ gl }) => {
-        gl.setClearColor(new THREE.Color("#020207"));
-      }}
     >
       <fog attach="fog" args={["white", 50, 190]} />
-      {/* <Explosion /> */}
+      <Explosion />
+      <ambientLight intensity={0.5} />
+      <Light />
+      <BackgroundPlane />
       <Selection>
-        {/* <Light /> */}
-        <ambientLight intensity={0.5} />
-        {/* <BackgroundPlane /> */}
         <Effects />
         <TitleText />
       </Selection>
