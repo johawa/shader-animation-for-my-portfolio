@@ -12,5 +12,11 @@ body,
 }
 
 body {
+  background: #0c0f13;
+  overflow: hidden;
+  color: white;
+}
+
+body {
   background: #f0f0f0;
 }

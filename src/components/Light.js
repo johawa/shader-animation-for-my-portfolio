@@ -27,7 +27,7 @@ export default function Light({ vec = new Vector3() }) {
       position={[1.6, 7, 6]}
       intensity={2.8}
       color={"white"}
-      distance={100}
+      distance={50}
       decay={1}
       ref={light}
     />
