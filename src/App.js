@@ -11,10 +11,6 @@ import Explosion from "./components/Explosion";
 import Light from "./components/Light";
 import TitleText from "./components/Text";
 
-function degToRad(deg) {
-  return deg * (Math.PI / 180);
-}
-
 function Models() {
   const ref = useRef();
   const factor = useRef(5);
@@ -55,7 +51,6 @@ function App() {
       camera={{
         fov: 100,
         position: [0, 0, 30],
-        // rotation: [degToRad(-40), degToRad(30), degToRad(20)],
       }}
       onCreated={({ gl }) => {
         gl.setClearColor(new THREE.Color("#020207"));
@@ -67,9 +62,9 @@ function App() {
       <Beams />
       <Explosion scale={2.0} />
       <Particles count={250} mouse={mouse} />
+      
       <Selection>
         <Models />
-
         <Effects />
       </Selection>
 

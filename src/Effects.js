@@ -1,16 +1,11 @@
-import { extend } from "@react-three/fiber";
 import {
-  DepthOfField,
-  DotScreen,
+  ChromaticAberration,
   EffectComposer,
   Noise,
-  SelectiveBloom,
-  ChromaticAberration,
+  SelectiveBloom
 } from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
 import React from "react";
 
-import WaterEffect from "./postprocessing/WaterEffect";
 
 export default function Effects() {
   return (
