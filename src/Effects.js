@@ -8,11 +8,8 @@ import {
 } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import React from "react";
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import { WaterPass } from "./postprocessing/Waterpass";
-import  CustomSepia  from "./postprocessing/CustomSepia";
 
-extend({ WaterPass });
+import WaterEffect from "./postprocessing/WaterEffect";
 
 export default function Effects() {
   return (
@@ -32,8 +29,8 @@ export default function Effects() {
       />
       {/* <DotScreen blendFunction={BlendFunction.SUBTRACT} scale={0.8} /> */}
       <Noise opacity={0.02} />
-      <CustomSepia blendFunction={BlendFunction.NORMAL} />
-      {/* <waterPass attachArray="passes" factor={1.5} /> */}
+
+      <WaterEffect />
     </EffectComposer>
   );
 }
