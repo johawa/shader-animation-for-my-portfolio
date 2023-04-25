@@ -20,20 +20,20 @@ function Models() {
   const ref = useRef();
   const factor = useRef(5);
 
-  useFrame((state) => {
-    if (ref.current) {
-      ref.current.rotation.x = THREE.MathUtils.lerp(
-        ref.current.rotation.x,
-        state.mouse.y / factor.current,
-        0.01
-      );
-      ref.current.rotation.y = THREE.MathUtils.lerp(
-        ref.current.rotation.y,
-        -state.mouse.x / factor.current,
-        0.01
-      );
-    }
-  });
+  // useFrame((state) => {
+  //   if (ref.current) {
+  //     ref.current.rotation.x = THREE.MathUtils.lerp(
+  //       ref.current.rotation.x,
+  //       state.mouse.y / factor.current,
+  //       0.01
+  //     );
+  //     ref.current.rotation.y = THREE.MathUtils.lerp(
+  //       ref.current.rotation.y,
+  //       -state.mouse.x / factor.current,
+  //       0.01
+  //     );
+  //   }
+  // });
 
   return (
     <group ref={ref}>
@@ -60,7 +60,7 @@ function App() {
       }}
     >
       <fog attach="fog" args={["white", 50, 190]} />
-      <ambientLight intensity={1.0} />
+      <ambientLight intensity={5.0} />
       <Light />
       <Beams />
 
@@ -70,7 +70,7 @@ function App() {
         <Effects />
       </Selection>
 
-      {/* <OrbitControls /> */}
+      <OrbitControls />
     </Canvas>
   );
 }
