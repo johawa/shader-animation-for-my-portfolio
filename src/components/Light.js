@@ -1,8 +1,6 @@
-import { useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useHelper } from "@react-three/drei";
+import { useRef } from "react";
 import { Vector3 } from "three";
-import { PointLightHelper } from "three";
 
 export default function Light({ vec = new Vector3() }) {
   const light = useRef();
@@ -12,23 +10,21 @@ export default function Light({ vec = new Vector3() }) {
       vec.set(
         (state.mouse.x * viewport.width) / 2,
         (state.mouse.y * viewport.height) / 2,
-        0
+        -10
       ),
       0.1
     );
     light.current.updateMatrixWorld();
   });
 
-  // useHelper(light, PointLightHelper, 1, "cyan");
-
   return (
     <pointLight
       castShadow
-      position={[1.6, 7, 6]}
-      intensity={10}
+      position={[0, 0, 0]}
+      intensity={3}
       color={"white"}
       distance={50}
-      decay={0.6}
+      decay={0.2}
       ref={light}
     />
   );

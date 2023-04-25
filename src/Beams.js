@@ -6,6 +6,7 @@ import {
 import { DoubleSide, Vector3 } from "three";
 import { useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useControls } from "leva";
 
 export default function Beams() {
   const { nodes } = useGLTF("beams.glb");
@@ -37,6 +38,10 @@ export default function Beams() {
 }
 
 function Beam({ geometry, beams_mask, beam_index }) {
+  const config = useControls({
+    BeamColor: "#ffffff",
+  });
+
   const { vectors, initialPositionAttribute } = useMemo(() => {
     let vectors = [];
 
@@ -64,7 +69,7 @@ function Beam({ geometry, beams_mask, beam_index }) {
     const clock = state.clock;
     const elapsed = clock.getElapsedTime();
 
-    const transformVector = new Vector3(0, 0, 1);
+    const transformVector = new Vector3(0, 1, 1);
     transformVector.applyAxisAngle(
       new Vector3(0, 1, 0),
       elapsed * 0.25 + beam_index * 17.87975
@@ -117,8 +122,8 @@ function Beam({ geometry, beams_mask, beam_index }) {
         transmission={1}
         chromaticAberration={1}
         anisotropy={10}
-        color={"#f2f3f7"}
-         emissive={emissive}
+        color={config.BeamColor}
+        emissive={emissive}
       />
     </mesh>
   );

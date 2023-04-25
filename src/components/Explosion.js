@@ -1,14 +1,8 @@
-import React, { useRef } from "react";
-import { useGLTF, MeshTransmissionMaterial } from "@react-three/drei";
-import { DoubleSide } from "three";
-import { useControls } from "leva";
+import { useGLTF } from "@react-three/drei";
+import React from "react";
 
 export default function Explosion(props) {
-  const { nodes, materials } = useGLTF("/expolsion_expanded.glb");
-
-  const config = useControls({
-    color: "#413a3a",
-  });
+  const { nodes, materials } = useGLTF("/e_min.glb");
 
   return (
     <group {...props} dispose={null}>
@@ -17,26 +11,11 @@ export default function Explosion(props) {
         position={[0, -10, 0]}
         castShadow
         receiveShadow
-        geometry={nodes.Cube_cell005.geometry}
-        // material={materials.Rock}
-      >
-        <MeshTransmissionMaterial
-          alphaToCoverage={true}
-          transparent={true}
-          side={DoubleSide}
-          envMapIntensity={0}
-          roughness={0.2}
-          ior={1.5}
-          thickness={0.205}
-          transmission={1}
-          chromaticAberration={1}
-          anisotropy={10}
-          color={"#413a3a"}
-          emissive={"#413a3a"}
-        />
-      </mesh>
+        geometry={nodes.Cube_cell.geometry}
+        material={materials.Rock}
+      ></mesh>
     </group>
   );
 }
 
-useGLTF.preload("/expolsion_expanded.glb");
+useGLTF.preload("/e_min.glb");

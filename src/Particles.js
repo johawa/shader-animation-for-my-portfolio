@@ -71,7 +71,7 @@ export default function Particles({ count, mouse }) {
     <>
       <pointLight ref={light} distance={40} intensity={8} color="lightblue" />
       <instancedMesh ref={mesh} args={[null, null, count]}>
-        <dodecahedronGeometry args={[0.1, 0]} />
+        <dodecahedronGeometry args={[0.15, 0]} />
         <meshPhongMaterial color="#faf2d9" castShadow receiveShadow emissive={"faf2d9"}/>
       </instancedMesh>
     </>
