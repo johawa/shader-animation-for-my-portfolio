@@ -5,9 +5,10 @@ const fragmentShader = /* glsl */ `
   uniform float time;
 
 	void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor) {			
+       float factor = 1.5; 
        vec2 uv1 = uv;
        float frequency = 6.0;
-       float amplitude = 0.015 * 1.0;
+       float amplitude = 0.015 * factor;
        float x = uv1.y * frequency + time * .7; 
        float y = uv1.x * frequency + time * .3;
        uv1.x += cos(x+y) * amplitude * cos(y);

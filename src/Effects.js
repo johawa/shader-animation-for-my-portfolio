@@ -5,6 +5,7 @@ import {
   EffectComposer,
   Noise,
   SelectiveBloom,
+  ChromaticAberration,
 } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import React from "react";
@@ -20,17 +21,12 @@ export default function Effects() {
         luminanceThreshold={0.2}
         intensity={3}
       />
-
-      <DepthOfField
-        focusDistance={0}
-        focalLength={0.02}
-        bokehScale={2}
-        height={480}
+      <ChromaticAberration
+        offset={[0.0035, 0.00035]}
+        radialModulation={true}
+        modulationOffset={0.4}
       />
-      {/* <DotScreen blendFunction={BlendFunction.SUBTRACT} scale={0.8} /> */}
-      <Noise opacity={0.02} />
-
-      <WaterEffect />
+      <Noise opacity={0.1} />
     </EffectComposer>
   );
 }

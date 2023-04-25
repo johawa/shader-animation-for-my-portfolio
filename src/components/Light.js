@@ -19,16 +19,16 @@ export default function Light({ vec = new Vector3() }) {
     light.current.updateMatrixWorld();
   });
 
-  useHelper(light, PointLightHelper, 1, "cyan");
+  // useHelper(light, PointLightHelper, 1, "cyan");
 
   return (
     <pointLight
       castShadow
       position={[1.6, 7, 6]}
-      intensity={2.8}
+      intensity={10}
       color={"white"}
       distance={50}
-      decay={1}
+      decay={0.6}
       ref={light}
     />
   );
